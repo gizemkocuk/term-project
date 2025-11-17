@@ -1,8 +1,3 @@
-a = "abc"
-print(a)
-
-
-
 
 
 
