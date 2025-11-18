@@ -1,5 +1,6 @@
 #data/books.json
 import json
+
 books = [
     {
     "isbn": "978-1557427663",
@@ -8,7 +9,8 @@ books = [
     "year": 1915,
     "genre": "Novella",
     "copies_owned": 2,
-    "copies_available": 2
+    "copies_available": 2,
+    "retired": False
     },
     {
     "isbn": "978-9176052242",
@@ -17,7 +19,8 @@ books = [
     "year": 1878,
     "genre": "Realist Fiction",
     "copies_owned": 5,
-    "copies_available": 4
+    "copies_available": 4,
+    "retired": False
     },
     {
     "isbn": "978-0141439518",
@@ -26,7 +29,8 @@ books = [
     "year": 1813,
     "genre": "Romance",
     "copies_owned": 4,
-    "copies_available": 4
+    "copies_available": 4,
+    "retired": False
     },
     {
     "isbn": "978-0060853983",
@@ -35,12 +39,13 @@ books = [
     "year": 1990,
     "genre": "Fantasy",
     "copies_owned": 3,
-    "copies_available": 3
+    "copies_available": 3,
+    "retired": False
     }
 ]
-
 with open("books.json", "w", encoding="utf-8") as fh: 
     json.dump(books, fh, indent=2, ensure_ascii=False) 
+
 
 
 def load_books(path: str) -> list:
@@ -48,14 +53,124 @@ def load_books(path: str) -> list:
     with open(path, "r", encoding="utf-8") as fh:
         books_list = json.load(fh)
         return books_list
-#except:
+    except FileNotFoundError:#
+        return []
+    except json.JSONDecodeError:#
+        return []
+    except Exception:
+        return []
 
 
 
+def save_books(path: str, books: list) -> None:
+    try:
+        with open(path, "w", encoding="utf-8") as fh:
+            json.dump(books, fh, indent=2, ensure_ascii=False)
+    except Exception:#
+        print("error")#
 
-def save_books(path: str, books: list) -> None: ... 
-def add_book(books: list, book_data: dict) -> dict: ... 
-def update_book(books: list, isbn: str, updates: dict) -> dict: ... 
-def search_books(books: list, keyword: str) -> list: ... 
+
+#book_data = {}(isbn,title,authors,year,genre,owned,available,retire)
+def add_book(books: list, book_data: dict) -> dict: 
+    isbn = book_data.get("isbn")
+    if not isbn:
+        print("no isbn")
+        return None
+    for book in books:
+        if book.get("isbn") == isbn:
+            print(f"isbn:{isbn} is already added.")
+            return None
+    try:
+        copies = int(book_data.get("copies_owned",1))#
+        if copies <= 0:
+            print("owned copies should be a positive number")
+            return None
+        new_book = {
+            "isbn": isbn,
+            "title": book_data.get("title", "unknown"),
+            "authors": book_data.get("authors", ["unknown"]),
+            "year": book_data.get("year", "unknown"), 
+            "genre": book_data.get("genre", "unknown"),
+            "copies_owned": copies,
+            "copies_available": copies,
+            "retired": False
+        }
+        books.append(new_book)
+        return new_book
+    except ValueError:
+        print("error")
+        return None
+    except Exception as e:#
+        print("error")
+        return None
+
+
+
+#updates = {} ###soft delete
+def update_book(books: list, isbn: str, updates: dict) -> dict:
+    for book in books:
+        if book.get("isbn") == isbn:
+            try:
+                if "copies_owned" in updates:
+                    new_owned = int(updates["copies_owned"])
+                    if new_owned < 0:
+                        return None
+                    copies_loaned = book["copies_owned"] - book["copies_available"]
+                    if new_owned < copies_loaned:
+                        return None
+                    book["copies_owned"] = new_owned
+                    book["copies_available"] = new_owned - copies_loaned
+                for key, value in updates.items():#
+                    if key in book and key not in ("isbn", "copies_available"):
+                        book[key] = value
+                return book
+            except ValueError:
+                print("error")
+                return None
+            except Exception:
+                print("error")
+                return None
+    return None
+
+
+#keyword
+def search_books(books: list, keyword: str) -> list:
+    if not keyword:
+        return books
+    keyword = keyword.lower().strip()
+    results = []
+    for book in books:
+        title = book.get("title", "").lower()
+        authors = " ".join(book.get("authors", [])).lower()
+        if keyword in title or keyword in authors:
+            results.append(book)
+    return results
+
+
+
 def filter_books(books: list, *, genre: str | None = None, year: int | 
-None = None) -> list: ... 
+None = None) -> list:
+    results = books
+    if genre:
+        genre_lower = genre.lower().strip()
+        filtered_by_genre = []
+        for book in results:
+            book_genre = book.get("genre", "").lower()
+            if book_genre == genre_lower:
+                filtered_by_genre.append(book)
+        results = filtered_by_genre
+    if year is not None:#
+        filtered_by_year = []
+        try:
+            year_int = int(year)
+        except ValueError:
+            print("year must be a number")
+            return []
+        for book in results:
+            book_year = book.get("year")
+            if book_year is not None and book_year == year_int:
+                filtered_by_year.append(book)
+        results = filtered_by_year
+    return results
+
+####new_arrivals:
