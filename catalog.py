@@ -76,14 +76,14 @@ def update_book(books: list, isbn: str, updates: dict) -> dict:
                     if key in book and key not in ("isbn", "copies_available"):
                         book[key] = value
                 return book
-            except ValueError:
-                print("error")
+            except ValueError as e:
+                print(f"error: {e}")
                 return None
-            except Exception:
-                print("error")
+            except Exception as e:
+                print(f"error: {e}")
                 return None
     return None
-###
+
 def soft_delete(books: list, isbn: str) -> bool: #bool:boolean
     for book in books:
         if book.get("isbn") == isbn:
@@ -128,8 +128,8 @@ None = None) -> list:
             if book_year is not None and book_year == year_int:
                 filtered_by_year.append(book)
         results = filtered_by_year
-        return results
-###
+    return results
+
 def new_arrivals(books: list, limit: int = 5) -> list:
     sorted_books = sorted(books, key=lambda b: b.get("added_date", ""), reverse=True)
     return sorted_books[:limit]#
