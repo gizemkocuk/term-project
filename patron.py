@@ -21,7 +21,6 @@ def save_patrons(path: str, patrons: list) -> None:
     except Exception as e:
         print(f"error:{e}")
 
-#name, email, library ID#, contact info, and borrowing limits.
 def register_patron(patrons: list, patron_data: dict) -> dict:
     patron_id = patron_data.get("library_id")
     if not patron_id:
@@ -36,17 +35,17 @@ def register_patron(patrons: list, patron_data: dict) -> dict:
             "name": patron_data.get("name", "unknown"),
             "email": patron_data.get("email", "unknown"),
             "library_id": patron_data.get("library_id"),
-            "contact_info": patron_data.get("contact_info", "unknown"), 
+            "contact_info": patron_data.get("contact_info", {}), 
             "borrowing_limit": 5,
-            "password": patron_data.get("password", "1234")#
+            "password": patron_data.get("password", "1234"),
+            "fines": 0,#
+            "borrowing_history": []#
         }
         patrons.append(new_patron)
         return new_patron
     except Exception as e:
         print(f"error:{e}")
         return None
-
-#Reject invalid ISBNs and duplicate library IDs.
 
 def authenticate_patron(patrons: list, library_id: str, password: str) -> dict | None:
     for p in patrons:
@@ -55,6 +54,17 @@ def authenticate_patron(patrons: list, library_id: str, password: str) -> dict |
     print("Invalid ID or password") 
     return None
 
-
 def update_patron_contact(patrons: list, library_id: str, contact_updates: 
 dict) -> dict:
+    for patron in patrons:
+        if patron.get("library_id") == library_id:
+            try:
+                patron["contact_info"].update(contact_updates)
+                return patron
+            except Exception as e:
+                print(f"error: {e}")
+                return None
+    return None
+
+#Support login for self-service (view loans, renew requests).
+#Track outstanding fines and borrowing history for each patron.
