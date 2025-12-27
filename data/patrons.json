@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Admin Librarian",
+    "email": "admin@library.com",
+    "library_id": "admin",
+    "contact_info": {},
+    "borrowing_limit": 10,
+    "password": "admin",
+    "fines": 0.0,
+    "borrowing_history": []
+  },
+  {
+    "name": "John Smith",
+    "email": "john@test.com",
+    "library_id": "P001",
+    "contact_info": { "phone": "555-0101" },
+    "borrowing_limit": 5,
+    "password": "1234",
+    "fines": 0.0,
+    "borrowing_history": []
+  },
+  {
+    "name": "Alice Johnson",
+    "email": "alice@test.com",
+    "library_id": "P002",
+    "contact_info": { "address": "123 Main St" },
+    "borrowing_limit": 5,
+    "password": "1234",
+    "fines": 5.0,
+    "borrowing_history": []
+  },
+  {
+    "name": "Emily Davis",
+    "email": "emily@test.com",
+    "library_id": "P003",
+    "contact_info": {},
+    "borrowing_limit": 5,
+    "password": "1234",
+    "fines": 0.0,
+    "borrowing_history": []
+  },
+  {
+    "name": "Michael Brown",
+    "email": "michael@test.com",
+    "library_id": "P004",
+    "contact_info": { "phone": "555-0202" },
+    "borrowing_limit": 5,
+    "password": "1234",
+    "fines": 0.0,
+    "borrowing_history": []
+  },
+  {
+    "name": "Sarah Wilson",
+    "email": "sarah@test.com",
+    "library_id": "P005",
+    "contact_info": {},
+    "borrowing_limit": 5,
+    "password": "1234",
+    "fines": 0.0,
+    "borrowing_history": []
+  },
+  {
+    "name": "David Miller",
+    "email": "david@test.com",
+    "library_id": "P006",
+    "contact_info": { "address": "456 Oak Ave" },
+    "borrowing_limit": 5,
+    "password": "1234",
+    "fines": 0.0,
+    "borrowing_history": []
+  },
+  {
+    "name": "Jessica Taylor",
+    "email": "jessica@test.com",
+    "library_id": "P007",
+    "contact_info": {},
+    "borrowing_limit": 5,
+    "password": "1234",
+    "fines": 0.0,
+    "borrowing_history": []
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "isbn": "978-1557427663",
+    "title": "The Metamorphosis",
+    "authors": ["Franz Kafka"],
+    "year": 1915,
+    "genre": "Novella",
+    "copies_owned": 2,
+    "copies_available": 2,
+    "retired": false,
+    "added_date": "2025-01-01"
+  },
+  {
+    "isbn": "978-9176052242",
+    "title": "Anna Karenina",
+    "authors": ["Leo Tolstoy"],
+    "year": 1878,
+    "genre": "Realist Fiction",
+    "copies_owned": 5,
+    "copies_available": 4,
+    "retired": false,
+    "added_date": "2025-01-05"
+  },
+  {
+    "isbn": "978-0141439518",
+    "title": "Pride and Prejudice",
+    "authors": ["Jane Austen"],
+    "year": 1813,
+    "genre": "Romance",
+    "copies_owned": 4,
+    "copies_available": 4,
+    "retired": false,
+    "added_date": "2025-02-14"
+  },
+  {
+    "isbn": "978-0060853983",
+    "title": "Good Omens",
+    "authors": ["Neil Gaiman", "Terry Pratchett"],
+    "year": 1990,
+    "genre": "Fantasy",
+    "copies_owned": 3,
+    "copies_available": 3,
+    "retired": false,
+    "added_date": "2025-05-20"
+  },
+  {
+    "isbn": "978-0743273565",
+    "title": "The Great Gatsby",
+    "authors": ["F. Scott Fitzgerald"],
+    "year": 1925,
+    "genre": "Classic",
+    "copies_owned": 3,
+    "copies_available": 3,
+    "retired": false,
+    "added_date": "2025-06-10"
+  },
+  {
+    "isbn": "978-0441013593",
+    "title": "Dune",
+    "authors": ["Frank Herbert"],
+    "year": 1965,
+    "genre": "Science Fiction",
+    "copies_owned": 5,
+    "copies_available": 2,
+    "retired": false,
+    "added_date": "2025-07-01"
+  },
+  {
+    "isbn": "978-0307474278",
+    "title": "The Da Vinci Code",
+    "authors": ["Dan Brown"],
+    "year": 2003,
+    "genre": "Thriller",
+    "copies_owned": 4,
+    "copies_available": 0,
+    "retired": true,
+    "added_date": "2025-01-01"
+  },
+  {
+    "isbn": "978-0345391803",
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "authors": ["Douglas Adams"],
+    "year": 1979,
+    "genre": "Sci-Fi",
+    "copies_owned": 4,
+    "copies_available": 4,
+    "retired": false,
+    "added_date": "2025-01-10"
+  },
+  {
+    "isbn": "978-0060935467",
+    "title": "To Kill a Mockingbird",
+    "authors": ["Harper Lee"],
+    "year": 1960,
+    "genre": "Classic",
+    "copies_owned": 3,
+    "copies_available": 3,
+    "retired": false,
+    "added_date": "2025-02-15"
+  },
+  {
+    "isbn": "978-0345339683",
+    "title": "The Hobbit",
+    "authors": ["J.R.R. Tolkien"],
+    "year": 1937,
+    "genre": "Fantasy",
+    "copies_owned": 6,
+    "copies_available": 6,
+    "retired": false,
+    "added_date": "2025-03-01"
+  },
+  {
+    "isbn": "978-0062315007",
+    "title": "The Alchemist",
+    "authors": ["Paulo Coelho"],
+    "year": 1988,
+    "genre": "Adventure",
+    "copies_owned": 5,
+    "copies_available": 5,
+    "retired": false,
+    "added_date": "2025-04-12"
+  },
+  {
+    "isbn": "978-0451524935",
+    "title": "1984",
+    "authors": ["George Orwell"],
+    "year": 1949,
+    "genre": "Dystopian",
+    "copies_owned": 4,
+    "copies_available": 4,
+    "retired": false,
+    "added_date": "2025-05-20"
+  }
+]
