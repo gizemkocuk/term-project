@@ -37,7 +37,7 @@ def register_patron(patrons: list, patron_data: dict) -> dict:
             "contact_info": patron_data.get("contact_info", {}), 
             "borrowing_limit": 5,
             "password": patron_data.get("password", "1234"),
-            "fines": 0.0
+            "fines": 0.0,
             "borrowing_history": []
         }
         patrons.append(new_patron)
